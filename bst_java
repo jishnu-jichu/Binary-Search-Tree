@@ -1,0 +1,143 @@
+import java.util.Scanner;
+class node
+{
+	public int data;
+	public node left;
+	public node right;
+	public node(int d)
+	{
+		data=d;
+	}
+}
+class bintree
+{
+	public node first;
+	public bintree()
+	{
+		first=null;
+	}
+	public boolean isEmpty()
+	{ 	
+		if(first==null)
+			return true;
+		else
+			return false;
+	}
+	public void insert(int d)
+	{
+		node newNode=new node(d);
+		node current;
+		node parent;
+		if(isEmpty())
+			first=newNode;
+		else
+		{	
+			current=first;
+			parent=null;
+			while(true)
+			{
+				parent=current;
+				if(d<parent.data)
+				{
+					current=current.left;
+					if(current==null)
+					{
+						parent.left=newNode;
+						return;
+					}
+				}
+				else
+				{
+					current=current.right;
+					if(current==null)
+					{
+						parent.right=newNode;
+						return;
+					}
+				}
+			}
+		}
+	}
+	public void inorder(node first)
+	{
+		if(first==null)
+			return;
+		inorder(first.left);
+		System.out.print(first.data+" ");
+		inorder(first.right);
+	}
+	public void preorder(node first)
+	{
+		if(first==null)
+			return;
+		System.out.print(first.data+" ");
+		preorder(first.left);
+		preorder(first.right);
+	}
+	public void postorder(node first)
+	{
+		if(first==null)
+			return;
+		postorder(first.left);
+		postorder(first.right);
+		System.out.print(first.data+" ");
+	}
+	public boolean searchkey(int key)
+	{
+		node current=first;
+		while(current!=null)
+		{
+			if(current.data==key)
+			{
+				System.out.println("\nElement Found");
+				return true;
+			}
+			else if(current.data>key)
+				current=current.left;
+			else
+				current=current.right;
+		}
+		System.out.println("\nElement not found");
+		return false;
+	}
+}
+class btree
+{
+	public static void main(String Str[])
+	{
+		Scanner sc=new Scanner(System.in);
+		bintree obj=new bintree();
+		int a=0;
+		while(a!=6)
+		{
+			System.out.println("\n Enter the choice\n 1 Insert\n 2 Inorder Traversal\n 3 Preorder Traversal\n 4 Postorder Traversal\n 5 Search For Key\n 6 Exit\n");
+			a=sc.nextInt();
+			switch(a)
+			{
+				case 1: System.out.println("Enter the element");
+					int x=sc.nextInt();
+					obj.insert(x);
+					break;
+				case 2: System.out.println("Inorder Traversal\n");
+					obj.inorder(obj.first);
+					break;
+				case 3: System.out.println("Preorder Traversal\n");
+					obj.preorder(obj.first);
+					break;
+				case 4: System.out.println("postorder Traversal");
+					obj.postorder(obj.first);
+					break;
+				case 5: System.out.println("Enter the element to be searched");
+					int k=sc.nextInt();
+					System.out.println("Searching....");
+					obj.searchkey(k);
+					break;
+				case 6: System.exit(0);
+					break;
+				default: System.out.println("Enter the right choice");
+					 break;
+			}
+		}
+	}
+}
+		
