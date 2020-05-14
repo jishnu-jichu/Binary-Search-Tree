@@ -20,6 +20,8 @@ When it comes to Binary Search Tree(BST),it's a binary tree with 2 properties
 			 					- Traverse the left subtree
 								- Traverse the right subtree
 								-Visit the root
-			We can also search for a particular key in the binary search tree.
+			
+			
+We can also search for a particular key in the binary search tree.
        
  
