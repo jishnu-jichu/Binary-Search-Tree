@@ -22,6 +22,6 @@ When it comes to Binary Search Tree(BST),it's a binary tree with 2 properties
 								-Visit the root
 			
 			
-We can also search for a particular key in the binary search tree.
+We can also search for a particular key value in the binary search tree.
        
  
